@@ -1,0 +1,9 @@
+## 1000 ft overview:
+    Management Tools:
+        1) Cloudwatch:
+            - Monitoring
+        2) Cloud formation:
+            - Web scripting infrastructure.
+            - Deploy infrastructure using scripts.
+        3) Clod trail:
+            - Management console.
