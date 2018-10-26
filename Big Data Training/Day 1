@@ -1,0 +1,70 @@
+Operational Systems Vs Analytical Systems.
+	- OS: System helps business to operate. e.g. Customers using services of bank. -> Transactions -> Online transaction processing Db. (OLTP) -> SQL Db helps in doing this.
+	- AS: Analyzing operations can be done in different way. -> Analysis -> Analysis (OLAP) -> Mostly NoSQL Dbs helps in this case.
+
+- Large number of operations are leading to have analysis on them.
+
+- SQL vs NoSQL:
+	- Fixed schema
+	- DB Constraints,
+	- ACID
+	- SQL: Vertical 
+	- NoSQL: Horizontal scales.
+	
+ 	- NoSQl: Dynamically defined schema. attributes gets defined and stored only if required.
+ 	- NoSQL: Sharding enabled: Partioning  
+	
+-- Cloudfare.
+
+- SQL:
+	- Row oriented: Easy to Perform operations on whole entity oftenly. -> Good for Operational Systemss
+	- Columnar: Easy to Do analysis. e.g. Min Max salary. -> Good for Analytical systems.
+	- Hybrid.
+
+- NoSQL:
+	- Document-Oriented databases (Twitter messages stored against profiles)
+		- Couchbase
+		- MongoDB
+		- Riak	
+	- Graph Databases: Relation between entities with some additional info.
+		- Infinite graph
+		- Neo4J
+		- OrientDB
+	- Key - Value stores:
+		- Redis 
+		- Riak.
+	- Column Store Databases:
+		- Apache HBase
+		- Cassandra.
+		
+- ETL: 
+- Realtime data ingestion
+- Batch data ingestion.
+
+- Data :
+	- Generate
+	- Capture
+	- Store
+	- Process
+	- Analyse	
+	
+- Multiple replicas -> retrieve -> for analytics -> 
+	
+HADOOP:
+	- Combination of hdfs and MapR.
+	- Solves Problem of storing a file on distributed system.
+	- HDFS:	APIs for Read/ Write data from distributed file system alsoe maintain the meta data.
+	- NameNode:	Stores the metadata, Supports regular checking.
+	- DataNode:	Actual node where data sits.
+	- MapReduce: framework is component in HDOOP, Writing and executing program on distributed db. -> Help in business logic.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	

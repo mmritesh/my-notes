@@ -1,0 +1,43 @@
+Machine Learning:
+	- Google search, ability of computers to detect spam from non spam, facebook recognizes your friends in your pictures.
+	- Science of getting computers to learn without being explicitly programmed is Machine learning.
+	
+	- ML grew out of work in AI.
+	- New capability for computers.
+	
+	Examples:
+		- Database mining:
+			- Large datasets from growth of automation/ web.
+			e.g.: web click data (Web stream data.), medical records, biology, engineering.
+		- Applications cant be programmed by hand:
+			e.g.: Autonomous helicopter, handwriting recognition, NLP, Computer vision.
+		- Self customizing programms:
+			e.g.: Amazon, Netflix product recommendations.
+
+What is And what isn't Machine Learning:
+	(1) Arther Samuel(1959): ML: Feild of study that gives computers ability to learn without explicitly programmed.
+	(2) Tom Mitchell(1998): Well posed learning problem: A computer program is said to learn from experience E, with respect to task T, and some performance measire P,
+		if its performance on T, as measured by P improves experience E.
+		
+Machine Learning Algorithms:
+	- Supervised learning
+	- Unsupervised learning.
+	- Reinforcement leanring
+	- Recommender Systems.
+	
+Supervised Learning:
+    - Data set is given, we already know what our correct output should look like,  We may have categories in data, need to find right answer for some questions asked on it.
+    - Support vector. helps to work with the infinite number of features.
+    - Buy a house, Breast cancer problem, Tumor is melignant or benign,
+    - Regression problem: our goal is to predict a continuous valued output. -> Size of houses vs price is given -> trying to map input values to a continuous function.
+    - Classificaiton problem: Goal is to predict a descrete valued output. -> 0 - melignant, 1 - benign
+    
+Unsupervised Learning:
+    - GIven data leaves in clusters, gouping based on few common properties which are not explicitely mentioned, No categories in data (like benign/malignant, spam/nonspam), 
+    - Formal definition: Unsupervised learning allows us to approach the problems with little or no idea what our results should look like. We can derive structure from data where we dont necessorily know the effect of the variables.
+    -  We can derive this structure by clustering the data based on relationships among the variables in the data.
+    - e.g.: Organize computer clusters, Social Network analysis, Market Segmentation, Astronomical data analysis.
+    - Cocktail Party Algorithm: Allows you to find structure in chaotic environment. (Saparate Speaker's sound and the music sound saparetely)
+    - Leanring and prototyping tool: Octave OR Matlab.
+    - [W, s, v ] = svd((repmat(sum(x.*x,1), size(x,1),1).*x)*x')
+    

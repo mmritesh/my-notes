@@ -1,0 +1,16 @@
+- Store Resource Stats: -> YARN -> yet Another resource negotiator.
+	- Stores stats of available resources on node,
+	- e.g. RAM, CPU cores, Disk.
+	- Everything in yarn is configured in form of containers.
+	
+- Before a dept in organization requests data it should communicate with resource stats for the data. -> gate keeping. -> So that all the depts should have access to the cluster.
+
+- HDFS -> MapReduce -> common libs -> PIG (Declarative programming lang that converts to mapR logic) 
+								   -> HIVE (Relational db, Run SQL queries on hadoop for analysts.) 
+								   -> SPARK (Supports in-memory map reduce operation, avoids writting the results to disk everytime.) -> All these talk to yarn by default to get resources and containers and data storage.
+								   
+- Cludera, Hortenworks, MapR, IBM -> HADOOP destributions.
+
+- Application Managers: Communicate with YARN to have all resources available in sync.
+- Data Engineer (Getting data from sources, save to data lake, apply business logic), Data scientist (Deduce insights out of the stored data.), 
+	DevOps (Make sure the systems are up and running.).

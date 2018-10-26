@@ -1,0 +1,436 @@
+
+1] app folder :
+- Angular 2 application lives in this folder.
+- This is the place where we create angular 2 single page applications.
+
+
+2] app.component.ts :
+- Angular 2 has one or more components based on its architecture.
+- app.component.ts is root component of a particular angular2 application.
+- It gets loaded at the start of the application.
+- It is loaded as root component because in app.module.ts we mention it in the bootstrap section.
+
+
+3] app.module.ts :
+
+- Angular application is divided into modules. app.module.ts manages this application modules.
+- It bootstraps the AppComponent . As it defines our AppComponent to be bootstraped that tells angular2  please start the application with AppComponent as the root component. 
+- This means loading AppComponent as the first component.
+
+4] main.ts:
+- It loads the AppModule which further bootstraps the AppComponent.
+- This is the file where the application actually initiates.
+
+* Every component has not only type script class but also needs a template [HTML] inline or a separate file
+
+5] ng serve :
+- We can serve the application throught the CLI
+- Angular CLI starts a development server running on NodeJS in the background.
+- This server will then host the application.
+
+6] @Component : 
+- Its an angular decorator which is imported from angular-core
+- Placing it above a typescript class definition tells angular2 that this is not a simple typescript class or file but is a angular component file which  has logic to render, compute or manipulate data for that components template.
+- This component consist of following :
+	
+	i) selector :
+	-	This is a unique name that which works as tag when place in a html file represents the html code of its corresponding template.
+	- Example <app-user></app-user>
+	- When placing this in a html, angular2 won't scan for this selector in all the available components insteadd we need to explicitly tell angular 2 that which component your app really uses.
+	- This is done by registering the component in the AppModule in the declaration section by writing the name of component ts class & also importing it.[NOTE : While importing you don't specify the name as .ts]
+	
+	ii) template :
+	- This sections represents the html code of the component. 
+	- This html code can be placed inline within the template in '' of the ts file of the component.
+	- Another more preferred way is to place it in html file whose name is mentioned in this template section of the typescript file of the respective component.
+	
+================================================================================================================================
+
+===================================================Data-Binding================================================================
+
+1. Introduction :
+- Basically means interacting with your typescript code and templates.
+
+2. Data-Binding types :
+
+
+a) String interpolation
+- {{}} is called string interpolation which is 1 of the 4 forms of data-binding in angular2.
+- It allows you to interpolate a string which means you put property of your class in curly braces and angular2 will go to that property fetch its content and output it there.
+
+Example :
+
+ - app.component.ts file code :
+		
+	import { Component } from '@angular/core';
+	@Component({
+	  selector: 'app-root',
+	  templateUrl: './app.component.html',
+	  styleUrls: ['./app.component.css']
+	})
+	export class AppComponent {
+	  title = 'app works!';
+	}
+
+ - app.component.html file code : 
+ 
+	<h1>
+		{{title}}
+	</h1>
+
+---> Here the title represents string 'app works' when rendered on browser.
+
+- The {{}} syntax does data binding here.
+
+NOTE :- Any property you are refering to has to be a string or something that can be cast to a string.
+
+- For example if you add one more property to your class say age = 27 and you interpolate it in your html {{age}} then this will work but if your property is an object like 
+person = {
+    name: 'Max',
+    age: 27
+  };
+ 
+  then {{person}} will cast to string and but will represent as [object Object]. So inorder to interpolate the object contents you will need to do it like {{person.name}} - {{person.age}}. Note here - is just normal hyphen and not part of syntax, we used for representation.
+  
+  
+b) Property binding :
+
+- Example :  <input type="text" [value]="age">    
+
+- This is an alternative to string interpolation.
+- This type can be used where using string interpolation is not possible for example in case of built-in directives.
+- This is not only limited to using properties but also you can use this type when you need to display value which is rendered by a method . 
+- For example : 
+
+  In ts file :
+  
+  getName() {
+    return 'Max';
+  }
+
+  In html file :
+  
+  <input type="text" [value]="getName()">
+  
+  
+c) Event binding :
+  In ts file :
+  
+  setAge(age: number) {
+    this.age = age;
+  }
+  
+  In html file :
+  
+  <button (click)="setAge(30)">Click me!</button>
+  
+  You can also write as <button (click)="age = 30">Click me!</button> but earlier is a better way.
+  
+d) Two-way binding [ Combination of event and property binding ] :
+
+- Example <input type="text" [(ngModel)]="person.name">
+- Here [(ngModel)] uses both property and event binding.
+- It allows us t setup the property which we want to bind in both directions
+- When using ngModel this will only work if you import the FormsModule in your AppModule
+
+=================================================================================================================
+
+=====================================================Directives==================================================
+
+1] Structural directives : 
+- * signifies that it is a structural directive.
+- Structural directive is a directive which changes the structure of your DOM.
+- Following are structural directive types :
+
+	1. *ngIf : 
+	- If controls the display of a particular html element on some condition. That is if that element is to be shown or not.
+	- * signifies that it is a structural directive.
+	- Structural directive is a directive which changes the structure of your DOM.
+	- And *ngIf thus does that if any element is to be shown or not.
+	- Example :
+
+		In ts file :
+		showInfo = false;
+
+		In html file :
+		<p *ngIf="showInfo"> Show some extra information </p>
+		
+	2. *ngFor :
+	- Use to loop in the template.	
+		
+		In ts file :
+		users = ['Max', 'Anna', 'Chris'];
+		
+		In html file :
+		<p *ngFor="let user of users">{{ user }}</p> 
+
+2] Attribute directives :
+- It just changes the element it sits on. Its not addinng or removing elements from the DOM.It simply changes the element it sits on.
+
+- Example :
+			<p [ngStyle]="{'background-color':color}">This is green!</p> 		
+			
+** ngStyle Vs ngClass :
+
+- ngStyle is used to interpolate javascript object into style attribute, not css class.
+  Following directive will be translated to style="color:red"
+  [ngStyle]="{'color': 'red'}"
+  
+  Also you can specify attributes values dynamically as follows :
+  <div [ngStyle]="{'color': color, 'font-size': size + 'px'}">
+		style using ngStyle
+  </div>
+  
+  Where size can be a variable in ur component.ts which you can manipulte dynamically. 
+  
+  Example : 
+  <div [ngStyle]="{'color': 'blue', 'font-size': '24px', 'font-weight': 'bold'}">
+	style using ngStyle
+  </div>
+
+- ng-class directive translates your object into class attribute.
+  Following will be translated to class="deleted" when isDeleted variable is true.
+  ng-class="{'deleted': isDeleted}"
+  
+  Also we can use ngClass using following ways :
+  
+  <div [ngClass]="['bold-text', 'green']">array of classes</div>
+  <div [ngClass]="'italic-text blue'">string of classes</div>
+  <div [ngClass]="{'small-text': true, 'red': true}">object/map of classes</div>
+  
+  Also we can do conditonal styling as follows :
+   [ngClass]="(i%2 == 0?'color-red':'color-blue')"
+  
+==============================================================================================================================			
+========================================== Custom property and event binding =================================================== 
+
+- You can explicitly specify a property to be bindable from outside by using @Input.
+- @Input means data is set from outside 
+- @Output means data is passed on to outside.
+
+Example : 
+
+			In app.component.html : 
+			<app-users [users]="registeredUsers"></app-users>
+
+			In app.component.ts :
+			registeredUsers = ['A','B','C']
+
+			In users.component.ts :
+
+			export class UsersComponent {
+				@Input() users : any;
+			}
+
+			In users.component.html file :
+			<p *ngFor="let user of users">{{ user }}</p> 
+			
+			Ouput : 
+			A
+			B
+			C
+
+Scenario : When we have event in our UsersComponent then we must inform our parent component i.e AppComponent about this :
+
+			In users.component.html :
+			<button (click)="onShowAlert()">Show Alert</button>
+			
+			In app.component.ts :
+			onChildAlert(){
+				alert('Show Alert button was clicked in child')
+			}
+			
+			Now the above method cannot be executed from UsersComponent by default but we can create a custom event to that.
+			
+			In app.component.html : 
+			<app-users [users]="registeredUsers" (alertThrown)="onChildAlert()"></app-users>
+			
+			(alertThrown) is not a event as of now but we can create it in UsersComponent.
+			
+			export class UsersComponent {
+				@Input() users : any;
+				alertThrown = new EventEmitter();
+			}
+			
+			Here you simply emit an event. EventEmitter is a generic which means it can hold or it may pass any form of data.
+			For example, it could pass the message you want to place in the alert.
+			
+			alertThrown = new EventEmitter<string>();
+			
+			To make this an event we still have to add something :
+			@Ouput()alertThrown = new EventEmitter<string>();
+			
+			With this you basically have your event setup.You can emit it in on onShowAlert(). By following :
+			export class UsersComponent {
+				@Input() users : any;
+				@Output()alertThrown = new EventEmitter<string>();
+				
+				onShowAlert(){
+					this.alertThrown.emit('This is my message');
+				}
+				
+				Now we may read the message we are passing with event . This message or data is stored in $event.
+				$event is reserved or protected word that angular2 uses to hold the event data.
+				So always use $event when to extract your own event data.
+			} 
+			
+			In app.component.html : 
+			<app-users [users]="registeredUsers" (alertThrown)="onChildAlert($event)"></app-users>
+			
+			In app.component.ts :
+			onChildAlert(message:string){
+				alert(message);
+			}
+	
+=================================================================================================================
+================================== Using Services & Dependency Injection ========================================
+
+- Let say we have more components holding and using our users data. 
+- Inorder to share common data we centralize this common data and use it using a service.
+- Service is simple typescript script class. Example as follows : 
+
+	export class UsersService {
+		private registeredUsers = ['A','B','C'];
+		
+		getUsers(){	
+			return this.registeredUsers;
+			
+		}
+	}
+	
+- Here we don't intstantiate services on our own. We must let Angular do that using a concept called dependency injection.
+
+- This means in the constructor you can define which dependencies your component has.
+- For example it needs the UsersService.Bind this to a property named usersService. UsersService also needs to be imported at the top.
+
+	In AppComponent :
+	
+	export class AppComponent{
+		
+		users:any[];
+		
+		constructor(private usersService : UsersService){
+		}
+	}
+
+- Through the type assignment in the constructor we are telling Angular 2 that please give me an instance of this UsersService class. Therefore Angular2 will instantiate it for us.
+
+- This is the advantage Angular2 also manages all the instances that it create through out our application.
+- This allows us now to access this UsersService in our component which is registered as a property in this class.
+- Now you can access getUsers and set this equal to this.users as follows :- 
+
+	In AppComponent :
+	
+	export class AppComponent{
+		
+		users:any[];
+		
+		constructor(private usersService : UsersService){
+			this.users = this.usersService.getUsers();			//	Line 1
+		}
+	}
+	
+- But this won't work as with components Angular2 is not scanning whole project for any services or classes in general you might have or you might want to inject.
+- Instead it will need to be informed .
+- You can inform it by adding a property to your deocorator which called 'providers'.
+- This tells Angular2 which services or classes we want to inject here. So an array of types you need to inject here.
+
+	In AppComponent :
+	
+	import { Component } from '@angular/core';
+
+	import { UsersService } from "./users.service";
+
+	@Component({
+	  selector: 'app-root',
+	  templateUrl: './app.component.html',
+	  styleUrls: ['./app.component.css'],
+	  providers:[UsersService]					// ---> Notice this line
+	})
+	export class AppComponent {
+	  title = 'app works!';
+	  age = 27;
+	  person = {
+		name: 'Max',
+		age: 27
+	  };
+	  users: any[];
+
+	  constructor(private usersService: UsersService) {
+		this.users = this.usersService.getUsers();
+	  }
+
+	  getName() {
+		return 'Max';
+	  }
+
+	  setAge(age: number) {
+		this.age = age;
+	  }
+
+	  onChildAlert(message: string) {
+		alert(message);
+	  }
+	}
+
+- If UsersComponent is sub component of this AppComponent and you define providers there as well with dependency injection in constructor then it will create a instance for UsersComponent as well.
+- So in this case angular creates 2 instances of UsersService class 1 for AppComponent and 1 for UsersComponent as we have setup providers for both.
+- This is how dependency injection of Angular2 works.
+- It has a heirarchical injector which means for every component where you specify providers it create new instance of the class you define in the providers, once your injecting them in the constructor.
+- Sub components of the AppComponent would use the same instance if they don't setup providers in their class.
+- If you want your application to use same instance of the UsersService class, you have to remove components from the components and don't have to include there any more. Instead we need to add them at application level.
+- We do this in AppModule. Just define the class like UsersService in the providers section of AppModule and also don't forget to import the same.
+- Sometimes you may need separate instances then you can define those at component level instead of application level.
+
+---------------------------------------------------------------------------------------------------
+===================================== Life Cycle Hooks ============================================
+
+-  Angular only calls a directive/component hook method if it is defined.
+- After creating a component/directive by calling its constructor, Angular calls the lifecycle hook methods in the following sequence at specific moments:
+
+1. ngOnChanges() :
+- The method receives a SimpleChanges object of current and previous property values.
+- Called before ngOnInit() and whenever one or more data-bound input properties change.
+
+2.ngOnInit():
+- Initialize the directive/component after Angular first displays the data-bound properties and sets the directive/component's input properties.
+- Called once, after the first ngOnChanges().
+
+3. ngDoCheck():
+- Detect and act upon changes that Angular can't or won't detect on its own.
+- Called during every change detection run, immediately after ngOnChanges() and ngOnInit().
+
+4. ngAfterContentInit():
+- Respond after Angular projects external content into the component's view.
+- Called once after the first ngDoCheck().
+- A component-only hook.
+
+5. ngAfterContentChecked() :
+- Respond after Angular checks the content projected into the component.
+- Called after the ngAfterContentInit() and every subsequent ngDoCheck().
+- A component-only hook.
+
+6. ngAfterViewInit():
+- Respond after Angular initializes the component's views and child views.
+- Called once after the first ngAfterContentChecked().
+- A component-only hook.
+
+7.ngAfterViewChecked():
+- Respond after Angular checks the component's views and child views.
+- Called after the ngAfterViewInit and every subsequent ngAfterContentChecked().
+- A component-only hook.
+
+8.ngOnDestroy :
+- Cleanup just before Angular destroys the directive/component. 
+- Unsubscribe Observables and detach event handlers to avoid memory leaks.
+- Called just before Angular destroys the directive/component.
+
+Q. Difference between constructor & ngOnInit ?
+- Constructor is a default method of the class that is executed when the class is instantiated and ensures proper initialization of fields in the class and its subclasses. 
+-  Angular or better DI analyzes the constructor parameters and when it creates a new instance by calling new MyClass() it tries to find providers that match the types of the constructor parameters, resolves them and passes them to the constructor like new MyClass(someArg);
+- ngOnInit is a life cycle hook called by Angular2 to indicate that Angular is done creating the component.
+
+
+Q. Consider a situation where there is a header component, a body component and a footer component.If we say that header and footer will be constant and middle be changing say intially dashboard then details and so-on then can we make sure that no reloading of header and footer happens and only middle changes?
+- Place selector at top, router-outlet at middle and footer selector at bottom. Then router outlet will take care of that.
+

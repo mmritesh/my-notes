@@ -1,0 +1,19 @@
+HDOOP Ecosystem:
+	- SCOOP: get data from rdbms to hadoop.
+	
+MapReduce: 
+	- Task tracker, Job tracker.
+	
+YARN:
+	- Resource manager,
+	- Application Master.
+	- Node manager.
+	
+	- In hDOP1, MapReduce was taking responsibility of resource allocation and task scheduling and actual computation.
+	- In HDoop2, decoupled resource management and computation. and came up with YARN.
+	
+	- Container: JVM process to help running the app. Represents collection of physical resources.
+	
+	
+HIVE:
+	- 

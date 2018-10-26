@@ -1,0 +1,15 @@
+Paypal ETL:
+	
+	Source DB -> Extraction framework -> Datafile/ QC file -> fringe server -> ETL Node -> HDFS -> Hive -> 
+			Landing table(External table) - Row Sink - CDM (Common Data Model) (updating increamental data to CDM is a challenge) () -> Teradata data instances.
+	
+	- metastore on extraction 
+	- metastore at ETL node as well. -. Hive table scemas are stored here.
+	
+	- MSCKRepair??
+	
+	- Dynamica Partitioning: Putting data to diffrent buckets. I dont know where the data has to go. Dynamically decide which bucket a data should go
+	
+	- Loading data from previous snapshot and current snapshot which does not exist in delta.
+	
+	- UC4 - Workflow management tool. -> triggers each of the scripts in the pipeline after satisfying the dependencies.

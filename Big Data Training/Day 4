@@ -1,0 +1,19 @@
+Ingestion:
+	- Batch operation and stream.
+	- Frequency
+	
+	- Identify data modification, and adding new data per day -> Read logs from the DB manager.
+	- lastfetch
+	- maintain the log/metadata of the bach
+
+	- lineage
+	- Data governance
+	
+- RealTime ingestion:
+	- lambda architecture: reatime and batch combine to get the the latest data.
+	- delivary semantics: fastness of the system. extactly once, atmost once, 
+	- We cache the ingested data upto certain limit and then store it to disk.
+
+- Schema change on source:
+	- AVRO: format of storing a data in file.
+	- Associate schema with data,
