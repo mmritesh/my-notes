@@ -1,9 +1,137 @@
 ## 1000 ft overview:
-    Management Tools:
+    # Management Tools:
         1) Cloudwatch:
             - Monitoring
+            - IMP for the exam
+
         2) Cloud formation:
             - Web scripting infrastructure.
             - Deploy infrastructure using scripts.
+
         3) Clod trail:
             - Management console.
+            - Log account activity related to actions across your AWS infrastructure.
+            - bydefault stores data for a week.
+
+        4) Config:
+            - enables you to assess, audit, and evaluate the configurations of your AWS resources
+            - continuously monitors and records your AWS resource configurations
+            and allows you to automate the evaluation of recorded configurations against desired configurations
+
+        5) Ops works:
+            - configuration management service that provides managed instances of Chef and Puppet
+            - Chef and Puppet are automation platforms that allow you to use code to automate the configurations of your servers.
+
+        6) Service catalogue:
+            - Manage IT services which are approved to use on aws.
+            - These IT services can include everything from virtual machine images, servers, software,
+            and databases to complete multi-tier application architectures
+
+        7) Systems Manager:
+            - Interface for managing aws resources
+            - gives you visibility and control of your infrastructure on AWS
+            - Systems Manager provides a unified user interface so you can view operational data from multiple AWS services
+            and allows you to automate operational tasks across your AWS resources.
+            - Systems Manager simplifies resource and application management, shortens the time to detect and resolve
+            operational problems, and makes it easy to operate and manage your infrastructure securely at scale.
+
+        8) Trusted Advisor:
+            - IMP for exam.
+            - It helps you to observe best practices for the use of AWS by inspecting your AWS environment with an eye
+            toward saving money.
+
+        9) Managed Services:
+            - Manage EC2 instances etc.
+
+
+    # Media Services:
+        1) Elastic Transcoder:
+            - Amazon Elastic Transcoder is media transcoding in the cloud. It is designed to be a highly scalable,
+            easy to use and a cost effective way for developers and businesses to convert (or “transcode”) media files
+            from their source format into versions that will playback on devices like smartphones, tablets and PCs.
+
+        2) Media Convert: Not IMP
+            - Media convert, Media Live, Media Package, Media Store, Media Tailor.
+
+    # Machine Learning:
+        1) Sage Maker:
+            - Amazon SageMaker is a fully-managed platform that enables developers and data scientists to quickly and
+            easily build, train, and deploy machine learning models at any scale. Amazon SageMaker removes all
+            the barriers that typically slow down developers who want to use machine learning.
+
+        2) Comprehend:
+            - Sentiment analysis arround data.
+
+        3) DeepLens:
+            - Recognises faces objects.
+
+        4) Lex:
+            - Artificial intelliegent way of chatting with customers.
+
+        5) Machine learning:
+
+        6) Polly:
+            - Amazon Polly is a service that turns text into lifelike speech, allowing you to create applications that
+            talk, and build entirely new categories of speech-enabled products. Amazon Polly is a Text-to-Speech service
+            that uses advanced deep learning technologies to synthesize speech that sounds like a human voice.
+
+        7) Rekognition:
+            - Video and images recognition.
+
+        8) Amazon Transcribe:
+            - Speach to text.
+
+    # Analytics:
+        1) Athena: Not imp.
+            - Allows you to run sql queries on S3 for analytics. Serverless.
+
+        2) EMR: imp
+            - Elastic Map Reduce.
+            - managed Hadoop framework that makes it easy, fast, and cost-effective to process vast amounts of data
+            across dynamically scalable Amazon EC2 instances. You can also run other popular distributed frameworks such as
+            Apache Spark, HBase, Presto, and Flink in Amazon EMR, and interact with data in other AWS data stores such as
+            Amazon S3 and Amazon DynamoDB.
+
+        3) Elastic Search Service:
+            -
+
+        4) Kinesis: imr
+            - Amazon Kinesis makes it easy to collect, process, and analyze real-time, streaming data so you can get
+            timely insights and react quickly to new information. Amazon Kinesis offers key capabilities to
+            cost-effectively process streaming data at any scale, along with the flexibility to choose the tools that
+            best suit the requirements of your application. With Amazon Kinesis, you can ingest real-time data such as
+            video, audio, application logs, website clickstreams, and IoT telemetry data for machine learning, analytics,
+            and other applications. Amazon Kinesis enables you to process and analyze data as it arrives and respond instantly
+            instead of having to wait until all your data is collected before the processing can begin.
+
+        5) QuickSite:
+            - Amazon QuickSight is a fast, cloud-powered BI service that makes it easy to build visualizations, perform
+            ad-hoc analysis, and quickly get business insights from your data.
+
+        6) Data Pipeline: imp
+            - Move data from one service to another.
+
+        7) Glue:
+            - ETL
+
+    # Security Identity and Compliance:
+        1) IAM:
+            - Identity and access management
+
+        2) Cognito:
+            - Authentication.
+
+        3) Guard Duty: new
+            - Monitors suspicious activity in aws account.
+
+        4) Inspector:
+            - Can run scheduled tests to detect serviourity and vulnerabilities.
+
+        5) Macie:
+            - Scan S3 buckett detects PII (personally identifiable info) tel.no, ph nos. so on.
+
+        6) Certificate Manager:
+            - Certificates for free. Way of managing ssl certs.
+
+        7) CloudHSM:
+            - Hardware security Module.
